@@ -3,6 +3,7 @@ package demo;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.DeprecatedConfigurationProperty;
 
 @ConfigurationProperties("hello")
 public class HelloProperties {
@@ -16,7 +17,7 @@ public class HelloProperties {
 	 * Suffix of the welcome message.
 	 */
 	@NotNull
-	private String target;
+	private String name;
 
 	public String getPrefix() {
 		return prefix;
@@ -26,12 +27,23 @@ public class HelloProperties {
 		this.prefix = prefix;
 	}
 
+	@Deprecated
+	@DeprecatedConfigurationProperty(reason = "lousy name", replacement = "hello.name")
 	public String getTarget() {
-		return target;
+		return getName();
 	}
 
+	@Deprecated
 	public void setTarget(String target) {
-		this.target = target;
+		setName(target);
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }
