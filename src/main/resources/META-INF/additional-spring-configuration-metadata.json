@@ -11,5 +11,36 @@
       "type": "java.lang.String",
       "description": "Foo bar is explicit enough."
     }
+  ],
+  "hints": [
+    {
+      "name": "foo.counter",
+      "values": [
+        {
+          "value": 42,
+          "description": "Answer to Everything."
+        },
+        {
+          "value": 7,
+          "description": "Luck, luck, luck - not."
+        }
+      ],
+      "providers": [
+        {
+          "name": "any"
+        }
+      ]
+    },
+    {
+      "name": "foo.bar",
+      "providers": [
+        {
+          "name": "spring-bean-reference",
+          "parameters": {
+            "target": "java.lang.String"
+          }
+        }
+      ]
+    }
   ]
 }
